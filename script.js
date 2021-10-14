@@ -81,68 +81,7 @@ function addR() {
         // Set # of rows and # of columns
         numRows++;
         numCols++;
-
-        /*
-        // Sets length of square based on how many squares there are
-        let square_num = squares.length;
-        let square_length = 100 / (square_num + 1);
-        console.log(square_length);
-
-        // Creates first square 
-        let square = document.createElement("div");
-        square.style.border = "1px solid black";
-        square.style.height = `${square_length}%`;
-        square.style.width = `${square_length}%`;
-        square.style.margin = "5px 5px 5px 5px";
-        table.appendChild(square);*/
     }
-
-    /*
-    // Checks if squares exist on div
-    if (div_exists) {
-        let rows = document.getElementsByClassName("row");
-        console.log(rows.length);
-        for (let i = 0; i < rows.length; i++) {
-            // rows[i].style.float = "left";
-
-            // Create div for column and add to board
-            // let column = document.createElement("div");
-            // column.className = "column";
-            // table.appendChild(column);
-
-            // Create square and add to board
-            let square = document.createElement("div");
-            square.className = "square";
-            square.style.border = "1px solid black";
-            square.style.margin = "5px 2.5px 5px 2.5px";
-            rows[i].appendChild(square);
-
-            // Sets length of square based on how many squares there are
-            let squares = document.getElementsByClassName("square");
-            let square_num = squares.length;
-            let square_length = 100 / (square_num);
-            console.log(square_length);
-            squares.forEach((sq) => {
-                sq.style.height = `${square_length}%`;
-                sq.style.width = `${square_length}%`;
-            });
-        }
-    }
-    else {
-        // Sets length of square based on how many squares there are
-        let square_num = div.length;
-        let square_length = 100 / (square_num + 1);
-        console.log(square_length);
-
-        // Creates first square 
-        let square = document.createElement("div");
-        square.style.border = "1px solid black";
-        square.style.height = `${square_length}%`;
-        square.style.width = `${square_length}%`;
-        square.style.margin = "5px 5px 5px 5px";
-        table.appendChild(square);
-    }
-*/
 }
 
 //Add a column
@@ -221,38 +160,7 @@ function addC() {
         // Set # of rows and # of columns
         numCols++;
         numRows++;
-
     }
-    /*
-    // Checks if there are squares in grid
-    let div = document.getElementsByClassName("square");
-    let div_exists = div.length ? true : false;
-
-    if (div_exists) {
-        // Creates row divs on the grid
-        let row = document.createElement("div");
-        row.className = "row";
-        // row.style.float = "left";
-        // row.style.boxSizing = "border-box";
-        table.appendChild(row);
-    }
-    else {
-        // Creates a square div on the grid
-        let square = document.createElement("div");
-        square.className = "square"
-        square.style.border = "1px solid black";
-        square.style.margin = "5px 2.5px 5px 2.5px";
-        table.appendChild(square);
-    }
-
-    // Sets length of square based on how many squares there are
-    let square_num = div.length;
-    let square_length = 100 / (square_num);
-    squares.forEach((sq) => {
-        sq.style.height = `${square_length}%`;
-        sq.style.width = `${square_length}%`;
-    });
-    */
 }
 
 //Remove a row
