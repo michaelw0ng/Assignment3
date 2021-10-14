@@ -2,9 +2,17 @@ let numRows = 0;
 let numCols = 0;
 let colorSelected; 
 
+// Puts table element in variable
+const table = document.getElementById("grid");
+
 //Add a row
 function addR() {
-    alert("Clicked Add Row")
+    let square = document.createElement("div");
+    square.style.border = "1px solid black";
+    square.style.height = "75px";
+    square.style.width = "75px";
+    square.style.margin = "5px 5px 5px 5px";
+    table.appendChild(square);
 }
 //Add a column
 function addC() {
