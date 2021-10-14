@@ -5,13 +5,13 @@ let colorSelected;
 // Puts table element in variable
 const table = document.getElementById("grid");
 
-// Set table width and height to 100%
-table.style.width = "100%";
-table.style.height = "100%";
-// table.style.float = "left";
-
 //Add a row
 function addR() {
+    let initial_length = window.innerHeight;
+    if (window.innerWidth < initial_length) {
+        initial_length = window.innerWidth;
+    }
+
     let squares = document.getElementsByClassName("square");
     let square_exists = squares.length ? true : false;
 
@@ -20,36 +20,58 @@ function addR() {
     row.className = "row";
     table.appendChild(row);
 
-    if (square_exists)
-    {
+    row.style.display = "flex";
+    row.style.justifyContent = "flex-start";
 
-        for (let i = 0; i < numCols; i++)
-        {
+    console.log(numCols);
+
+    if (square_exists) {
+        for (let i = 0; i < numCols; i++) {
             let square = document.createElement("div");
             square.className = "square";
             square.style.border = "1px solid black";
             square.style.margin = "5px 5px 5px 5px";
 
             row.appendChild(square);
-            numRows++;
         }
+        numRows++;
 
-        let square_width = 100 / (numCols * numRows);
-
-        for (let i = 0; i < squares.length; i++)
+        let largest_side = numCols;
+        if (numRows > numCols)
         {
+            largest_side = numRows;
+        }
+        
+        margin = 5 / largest_side;
+
+        let square_width = (initial_length - 50 - 3 * (largest_side + 1)) / largest_side;
+        square_width = Math.round(square_width);
+
+        let set_length = "";
+
+        for (let i = 0; i < squares.length; i++) {
             let square_to_edit = squares[i];
-            square_to_edit.style.width = `${square_width}%`;
-            square_to_edit.style.height = `${square_to_edit.clientWidth}px`;
+            if (i === 0) {
+                square_to_edit.style.width = `${square_width}px`;
+                square_to_edit.style.height = `${square_to_edit.clientWidth}px`;
+                set_length = `${square_to_edit.clientWidth}px`;
+                square_to_edit.style.width = set_length;
+                square_to_edit.style.height = set_length;
+
+            }
+            else {
+                square_to_edit.style.width = set_length;
+                square_to_edit.style.height = set_length;
+            }
+            square_to_edit.style.margin = `${margin}px ${margin}px ${margin}px ${margin}px`;
         }
     }
-    else 
-    {
+    else {
         // Creates first square 
         let square = document.createElement("div");
         square.className = "square";
         square.style.border = "1px solid black";
-        square.style.width = `100%`;
+        square.style.width = `${initial_length - 50}px`;
         square.style.margin = "5px 5px 5px 5px";
         let actual_square = row.appendChild(square);
 
@@ -59,7 +81,7 @@ function addR() {
         // Set # of rows and # of columns
         numRows++;
         numCols++;
-        
+
         /*
         // Sets length of square based on how many squares there are
         let square_num = squares.length;
@@ -125,43 +147,73 @@ function addR() {
 
 //Add a column
 function addC() {
+    let initial_length = window.innerHeight;
+    if (window.innerWidth < initial_length) {
+        initial_length = window.innerWidth;
+    }
+
     let squares = document.getElementsByClassName("square");
     let square_exists = squares.length ? true : false;
 
-    if (square_exists)
-    {
-        for (let i = 0; i < numRows; i++)
-        {
+    let rows = document.getElementsByClassName("row");
+
+    if (square_exists) {
+        for (let i = 0; i < numRows; i++) {
+            let row = rows[i];
             let square = document.createElement("div");
             square.className = "square";
             square.style.border = "1px solid black";
             square.style.margin = "5px 5px 5px 5px";
 
-            console.log("hello");
-
-            table.appendChild(square);
-            numCols++;
+            row.appendChild(square);
         }
+        numCols++;
 
-        let square_width = 100 / (numCols * numRows);
-
-        for (let i = 0; i < squares.length; i++)
+        let largest_side = numCols;
+        if (numRows > numCols)
         {
+            largest_side = numRows;
+        }
+        let margin = 5 / largest_side;
+
+        let square_width = (initial_length - 50 - 3 * (largest_side + 1)) / largest_side;
+        square_width = Math.round(square_width);
+
+
+        let set_length = "";
+
+        for (let i = 0; i < squares.length; i++) {
             let square_to_edit = squares[i];
-            square_to_edit.style.width = `${square_width}%`;
-            square_to_edit.style.height = `${square_to_edit.clientWidth}px`;
+            if (i === 0) {
+                square_to_edit.style.width = `${square_width}px`;
+                square_to_edit.style.height = `${square_to_edit.clientWidth}px`;
+                set_length = `${square_to_edit.clientWidth}px`;
+                square_to_edit.style.width = set_length;
+                square_to_edit.style.height = set_length;
+            }
+            else {
+                square_to_edit.style.width = set_length;
+                square_to_edit.style.height = set_length;
+            }
+            square_to_edit.style.margin = `${margin}px ${margin}px ${margin}px ${margin}px`;
         }
 
     }
-    else 
-    {
+    else {
+        let row = document.createElement("div");
+        row.className = "row";
+
+        row.style.display = "flex";
+        row.style.justifyContent = "flex-start";
+
+        table.appendChild(row);
         // Creates first square 
         let square = document.createElement("div");
         square.className = "square";
         square.style.border = "1px solid black";
-        square.style.width = `100%`;
+        square.style.width = `${initial_length - 50}px`;
         square.style.margin = "5px 5px 5px 5px";
-        let actual_square = table.appendChild(square);
+        let actual_square = row.appendChild(square);
 
         // Set height to width of square
         actual_square.style.height = `${actual_square.clientWidth}px`;
