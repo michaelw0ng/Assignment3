@@ -15,8 +15,14 @@ function addR() {
     let squares = document.getElementsByClassName("square");
     let square_exists = squares.length ? true : false;
 
+    // Creates row div
+    let row = document.createElement("div");
+    row.className = "row";
+    table.appendChild(row);
+
     if (square_exists)
     {
+
         for (let i = 0; i < numCols; i++)
         {
             let square = document.createElement("div");
@@ -24,7 +30,7 @@ function addR() {
             square.style.border = "1px solid black";
             square.style.margin = "5px 5px 5px 5px";
 
-            table.appendChild(square);
+            row.appendChild(square);
             numRows++;
         }
 
@@ -45,7 +51,7 @@ function addR() {
         square.style.border = "1px solid black";
         square.style.width = `100%`;
         square.style.margin = "5px 5px 5px 5px";
-        let actual_square = table.appendChild(square);
+        let actual_square = row.appendChild(square);
 
         // Set height to width of square
         actual_square.style.height = `${actual_square.clientWidth}px`;
@@ -130,6 +136,8 @@ function addC() {
             square.className = "square";
             square.style.border = "1px solid black";
             square.style.margin = "5px 5px 5px 5px";
+
+            console.log("hello");
 
             table.appendChild(square);
             numCols++;
