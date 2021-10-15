@@ -167,41 +167,53 @@ function addC() {
 
 //Remove a row
 function removeR() {
-    // Get all row div elements
-    let rows = document.getElementsByClassName("row");
-    // Get the last row
-    let row = rows[rows.length - 1];
-    row.remove();
-    numRows--;
-    // When there are no squares left, reset # of rows and columns
-    if (numRows === 0) {
-        numCols = 0;
+    let squares = document.getElementsByClassName("square");
+    let square_exists = squares.length ? true : false;
+
+    if (square_exists) {
+        // Get all row div elements
+        let rows = document.getElementsByClassName("row");
+        // Get the last row
+        let row = rows[rows.length - 1];
+        row.remove();
+        numRows--;
+        // When there are no squares left, reset # of rows and columns
+        if (numRows === 0) {
+            numCols = 0;
+        }
     }
 }
 //Remove a column
 function removeC() {
-    // Get all row div elements
-    let rows = document.getElementsByClassName("row");
-    for (let i = 0; i < rows.length; i++) {
-        let row = rows[i]
-        let row_squares = row.getElementsByClassName("square");
-        let last_square_in_row = row_squares[row_squares.length - 1];
-        last_square_in_row.remove();
-    }
-    numCols--;
 
-    // rows.length changes as rows are removed, so we need to initialize initial row length
-    let initial_row_length = rows.length;
+    let squares = document.getElementsByClassName("square");
+    let square_exists = squares.length ? true : false;
 
-    // When there are no squares left, reset # of rows and columns
-    if (numCols === 0)
-    {
-        for (let i = 0; i < initial_row_length; i++) {
-            // 0 index because rows' indices are dynamically deleted, so indices change
-            let row = rows[0];
-            row.remove();
+    if (square_exists) {
+        // Get all row div elements
+        let rows = document.getElementsByClassName("row");
+        for (let i = 0; i < rows.length; i++) {
+            let row = rows[i]
+            let row_squares = row.getElementsByClassName("square");
+            let last_square_in_row = row_squares[row_squares.length - 1];
+            last_square_in_row.remove();
         }
-        numRows = 0;
+        numCols--;
+
+        // rows.length changes as rows are removed, so we need to initialize initial row length
+        let initial_row_length = rows.length;
+
+        // When there are no squares left, reset # of rows and columns
+        if (numCols === 0) {
+            for (let i = 0; i < initial_row_length; i++) {
+                // 0 index because rows' indices are dynamically deleted, so indices change
+                let row = rows[0];
+                row.remove();
+                console.log(rows);
+            }
+            numRows = 0;
+        }
+
     }
 }
 //sets global var for selected color
