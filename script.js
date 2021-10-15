@@ -30,6 +30,9 @@ function addR() {
         for (let i = 0; i < numCols; i++) {
             let square = document.createElement("div");
             square.className = "square";
+            square.onclick = function onClick(){
+                this.style.backgroundColor = colorSelected;
+            };
             square.style.border = "1px solid black";
             square.style.margin = "5px 5px 5px 5px";
 
@@ -72,6 +75,9 @@ function addR() {
         square.className = "square";
         square.style.border = "1px solid black";
         square.style.width = `${initial_length}px`;
+        square.onclick = function onClick(){
+            this.style.backgroundColor = colorSelected;
+        };
         square.style.margin = "5px 5px 5px 5px";
         let actual_square = row.appendChild(square);
 
@@ -104,6 +110,9 @@ function addC() {
             let row = rows[i];
             let square = document.createElement("div");
             square.className = "square";
+            square.onclick = function onClick(){
+                this.style.backgroundColor = colorSelected;
+            };
             square.style.border = "1px solid black";
             square.style.margin = "5px 5px 5px 5px";
 
@@ -151,6 +160,9 @@ function addC() {
         // Creates first square 
         let square = document.createElement("div");
         square.className = "square";
+        square.onclick = function onClick(){
+            this.style.backgroundColor = colorSelected;
+        };
         square.style.border = "1px solid black";
         square.style.width = `${initial_length}px`;
         square.style.margin = "5px 5px 5px 5px";
@@ -238,5 +250,5 @@ function clearAll() {
 }
 
 function fillU() {
-    alert("Clicked Fill All Uncolored")
+    
 }
