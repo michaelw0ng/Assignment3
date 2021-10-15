@@ -219,15 +219,22 @@ function removeC() {
 //sets global var for selected color
 function selected() {
     colorSelected = document.getElementById("selectedID").value;
-    console.log(colorSelected);
 }
 
 function fill() {
-    alert("Clicked Fill All")
+    let squares = document.getElementsByClassName("square");
+    for (let i = 0; i < squares.length; i++) {
+        let square = squares[i];
+        square.style.backgroundColor = colorSelected;
+    }
 }
 
 function clearAll() {
-    alert("Clicked Clear All")
+    let squares = document.getElementsByClassName("square");
+    for (let i = 0; i < squares.length; i++) {
+        let square = squares[i];
+        square.style.backgroundColor = "white";
+    }
 }
 
 function fillU() {
