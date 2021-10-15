@@ -1,24 +1,33 @@
 div {
+   /* Centers all elements */
    display: flex;
    justify-content: center;
 }
 
 table {
    height: 100%;
+   
+   /* Positions table below title and buttons */
    position: absolute;
    top: 100px;
 }
 
 img {
+   /* Side by side positioning of title and logo */
    float: left;
 }
 
 h1 {
+   /* Title styling */
    font-family: Helvetica, sans-serif;
    -webkit-text-stroke-width: 1px; 
    -webkit-text-stroke-color: black; 
    color: dimgray;
+
+   /* Side by side positioning of title and logo */
    float: left;
+
+   /* Aesthetic purposes */
    margin: 0px 10px 0px 10px;
 }
 
