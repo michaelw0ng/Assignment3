@@ -7,10 +7,13 @@ const table = document.getElementById("grid");
 
 //Add a row
 function addR() {
+    // Set initial table length to height or width of window, whichever is lower
     let initial_length = window.innerHeight;
     if (window.innerWidth < initial_length) {
         initial_length = window.innerWidth;
     }
+    // Table length is shortened due to title and buttons
+    initial_length -= 125;
 
     let squares = document.getElementsByClassName("square");
     let square_exists = squares.length ? true : false;
@@ -44,7 +47,7 @@ function addR() {
         
         margin = 5 / largest_side;
 
-        let square_width = (initial_length - 50 - 3 * (largest_side + 1)) / largest_side;
+        let square_width = (initial_length - 3 * (largest_side + 1)) / largest_side;
         square_width = Math.round(square_width);
 
         let set_length = "";
@@ -71,7 +74,7 @@ function addR() {
         let square = document.createElement("div");
         square.className = "square";
         square.style.border = "1px solid black";
-        square.style.width = `${initial_length - 50}px`;
+        square.style.width = `${initial_length}px`;
         square.style.margin = "5px 5px 5px 5px";
         let actual_square = row.appendChild(square);
 
@@ -86,10 +89,13 @@ function addR() {
 
 //Add a column
 function addC() {
+    // Set initial table length to height or width of window, whichever is lower
     let initial_length = window.innerHeight;
     if (window.innerWidth < initial_length) {
         initial_length = window.innerWidth;
     }
+    // Table length is shortened due to title and buttons
+    initial_length -= 125;
 
     let squares = document.getElementsByClassName("square");
     let square_exists = squares.length ? true : false;
@@ -115,7 +121,7 @@ function addC() {
         }
         let margin = 5 / largest_side;
 
-        let square_width = (initial_length - 50 - 3 * (largest_side + 1)) / largest_side;
+        let square_width = (initial_length - 3 * (largest_side + 1)) / largest_side;
         square_width = Math.round(square_width);
 
 
@@ -150,7 +156,7 @@ function addC() {
         let square = document.createElement("div");
         square.className = "square";
         square.style.border = "1px solid black";
-        square.style.width = `${initial_length - 50}px`;
+        square.style.width = `${initial_length}px`;
         square.style.margin = "5px 5px 5px 5px";
         let actual_square = row.appendChild(square);
 
