@@ -26,8 +26,6 @@ function addR() {
     row.style.display = "flex";
     row.style.justifyContent = "flex-start";
 
-    console.log(numCols);
-
     if (square_exists) {
         for (let i = 0; i < numCols; i++) {
             let square = document.createElement("div");
@@ -40,11 +38,10 @@ function addR() {
         numRows++;
 
         let largest_side = numCols;
-        if (numRows > numCols)
-        {
+        if (numRows > numCols) {
             largest_side = numRows;
         }
-        
+
         margin = 5 / largest_side;
 
         let square_width = (initial_length - 3 * (largest_side + 1)) / largest_side;
@@ -115,8 +112,7 @@ function addC() {
         numCols++;
 
         let largest_side = numCols;
-        if (numRows > numCols)
-        {
+        if (numRows > numCols) {
             largest_side = numRows;
         }
         let margin = 5 / largest_side;
@@ -178,14 +174,35 @@ function removeR() {
     row.remove();
     numRows--;
     // When there are no squares left, reset # of rows and columns
-    if (numRows === 0)
-    {
+    if (numRows === 0) {
         numCols = 0;
     }
 }
 //Remove a column
 function removeC() {
-    alert("Clicked Remove Col")
+    // Get all row div elements
+    let rows = document.getElementsByClassName("row");
+    for (let i = 0; i < rows.length; i++) {
+        let row = rows[i]
+        let row_squares = row.getElementsByClassName("square");
+        let last_square_in_row = row_squares[row_squares.length - 1];
+        last_square_in_row.remove();
+    }
+    numCols--;
+
+    // rows.length changes as rows are removed, so we need to initialize initial row length
+    let initial_row_length = rows.length;
+
+    // When there are no squares left, reset # of rows and columns
+    if (numCols === 0)
+    {
+        for (let i = 0; i < initial_row_length; i++) {
+            // 0 index because rows' indices are dynamically deleted, so indices change
+            let row = rows[0];
+            row.remove();
+        }
+        numRows = 0;
+    }
 }
 //sets global var for selected color
 function selected() {
