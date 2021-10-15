@@ -179,6 +179,14 @@ function addC() {
 
 //Remove a row
 function removeR() {
+    // Set initial table length to height or width of window, whichever is lower
+    let initial_length = window.innerHeight;
+    if (window.innerWidth < initial_length) {
+        initial_length = window.innerWidth;
+    }
+    // Table length is shortened due to title and buttons
+    initial_length -= 125;
+
     let squares = document.getElementsByClassName("square");
     let square_exists = squares.length ? true : false;
 
@@ -193,10 +201,45 @@ function removeR() {
         if (numRows === 0) {
             numCols = 0;
         }
+        let largest_side = numCols;
+        if (numRows > numCols) {
+            largest_side = numRows;
+        }
+
+        margin = 5 / largest_side;
+
+        let square_width = (initial_length - 3 * (largest_side + 1)) / largest_side;
+        square_width = Math.round(square_width);
+
+        let set_length = "";
+
+        for (let i = 0; i < squares.length; i++) {
+            let square_to_edit = squares[i];
+            if (i === 0) {
+                square_to_edit.style.width = `${square_width}px`;
+                square_to_edit.style.height = `${square_to_edit.clientWidth}px`;
+                set_length = `${square_to_edit.clientWidth}px`;
+                square_to_edit.style.width = set_length;
+                square_to_edit.style.height = set_length;
+
+            }
+            else {
+                square_to_edit.style.width = set_length;
+                square_to_edit.style.height = set_length;
+            }
+            square_to_edit.style.margin = `${margin}px ${margin}px ${margin}px ${margin}px`;
+        }
     }
 }
 //Remove a column
 function removeC() {
+    // Set initial table length to height or width of window, whichever is lower
+    let initial_length = window.innerHeight;
+    if (window.innerWidth < initial_length) {
+        initial_length = window.innerWidth;
+    }
+    // Table length is shortened due to title and buttons
+    initial_length -= 125;
 
     let squares = document.getElementsByClassName("square");
     let square_exists = squares.length ? true : false;
@@ -225,7 +268,35 @@ function removeC() {
             }
             numRows = 0;
         }
+        let largest_side = numCols;
+        if (numRows > numCols) {
+            largest_side = numRows;
+        }
 
+        margin = 5 / largest_side;
+
+        let square_width = (initial_length - 3 * (largest_side + 1)) / largest_side;
+        square_width = Math.round(square_width);
+
+        let set_length = "";
+
+        for (let i = 0; i < squares.length; i++) {
+            let square_to_edit = squares[i];
+            if (i === 0) {
+                square_to_edit.style.width = `${square_width}px`;
+                square_to_edit.style.height = `${square_to_edit.clientWidth}px`;
+                set_length = `${square_to_edit.clientWidth}px`;
+                square_to_edit.style.width = set_length;
+                square_to_edit.style.height = set_length;
+
+            }
+            else {
+                square_to_edit.style.width = set_length;
+                square_to_edit.style.height = set_length;
+            }
+            square_to_edit.style.margin = `${margin}px ${margin}px ${margin}px ${margin}px`;
+
+        }
     }
 }
 //sets global var for selected color
