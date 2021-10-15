@@ -171,7 +171,17 @@ function addC() {
 
 //Remove a row
 function removeR() {
-    alert("Clicked Remove Row")
+    // Get all row div elements
+    let rows = document.getElementsByClassName("row");
+    // Get the last row
+    let row = rows[rows.length - 1];
+    row.remove();
+    numRows--;
+    // When there are no squares left, reset # of rows and columns
+    if (numRows === 0)
+    {
+        numCols = 0;
+    }
 }
 //Remove a column
 function removeC() {
